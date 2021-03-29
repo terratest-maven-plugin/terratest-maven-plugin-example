@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.terratest-maven-plugin</groupId>
+    <artifactId>terratest-maven-plugin-example</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <terratest.maven.plugin.version>1.0.0</terratest.maven.plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.terratest-maven-plugin</groupId>
+                <artifactId>terratest-maven-plugin</artifactId>
+                <version>${terratest.maven.plugin.version}</version>
+                <configuration>
+                    <terraTestPath>${project.basedir}/terratests</terraTestPath>
+                    <disableTestCaching>true</disableTestCaching>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!-- This goal will run even -DskipTests is active -->
+                            <goal>compile</goal>
+                            <goal>run-tests</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
